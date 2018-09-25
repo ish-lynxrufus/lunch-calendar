@@ -32,6 +32,19 @@ class LinebotController < ApplicationController
     head :ok
   end
 
+  def push
+    line_ids = LineFriend.pluck(:line_id).uniq
+
+    message = {
+      type: 'text',
+      text: 'どーもー'
+    }
+    response = client.multicast(line_ids, message)
+    p response
+
+    head :ok
+  end
+
   private
 
   def client
