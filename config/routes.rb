@@ -3,4 +3,8 @@ Rails.application.routes.draw do
   scope '/calendar' do
     get '/events/', to: 'calendar#events', as: 'calendar_events'
   end
+
+  scope '/linebot' do
+    post '/callback/', to: 'linebot#callback', as: 'linebot_callback'
+  end
 end

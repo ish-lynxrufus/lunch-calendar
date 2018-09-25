@@ -66,4 +66,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
+
+# api clients
 gem 'google-api-client', require: 'google/apis/calendar_v3'
+gem 'line-bot-api'
