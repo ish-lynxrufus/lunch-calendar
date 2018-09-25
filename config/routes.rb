@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   scope '/linebot' do
     post '/callback/', to: 'linebot#callback', as: 'linebot_callback'
+    get '/push/', to: 'linebot#push', as: 'linebot_push'
   end
 end
