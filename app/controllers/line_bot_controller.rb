@@ -1,6 +1,4 @@
 class LineBotController < ApplicationController
-  require 'line/bot'
-
   # callbackアクションのCSRFトークン認証を無効
   protect_from_forgery :except => [:callback]
 
@@ -21,7 +19,10 @@ class LineBotController < ApplicationController
 
       # 友達登録、ブロック解除
       if event.follow?
-        friend = LineFriend::add(event.user_id, line_bot.user_name(event.user_id))
+        friend = LineFriend.create(
+          line_id: event.user_id,
+          display_name: line_bot.user_name(event.user_id)
+        )
         message = "#{friend.display_name}さん、友達登録ありがとうございます！！"
         next line_bot.reply(message, event.reply_token)
       end
@@ -30,6 +31,7 @@ class LineBotController < ApplicationController
     head :ok
   end
 
+  # TODO: バッチ処理に移行したタイミングで削除する
   def push
     text = Calendar.new.event_summaries.join("\n")
     response = LineBot.new.push(text)
