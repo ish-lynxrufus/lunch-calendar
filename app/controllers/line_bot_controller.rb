@@ -1,4 +1,4 @@
-class LinebotController < ApplicationController
+class LineBotController < ApplicationController
   require 'line/bot'
 
   # callbackアクションのCSRFトークン認証を無効
