@@ -8,9 +8,7 @@ class LinebotController < ApplicationController
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
-    unless client.validate_signature(body, signature)
-      error 400 do 'Bad Request' end
-    end
+    return head(:bad_request) unless client.validate_signature(body, signature)
 
     events = client.parse_events_from(body)
 
@@ -34,15 +32,14 @@ class LinebotController < ApplicationController
 
   def push
     line_ids = LineFriend.pluck(:line_id).uniq
-
+    text = Calendar.new.events.items.map(&:summary).join("\n")
     message = {
       type: 'text',
-      text: 'どーもー'
+      text: text
     }
     response = client.multicast(line_ids, message)
-    p response
 
-    head :ok
+    render json: response
   end
 
   private
