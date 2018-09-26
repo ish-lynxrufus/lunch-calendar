@@ -21,7 +21,7 @@ class LineBotController < ApplicationController
 
       # 友達登録、ブロック解除
       if event.follow?
-        friend = LineFriend.add(event.user_id, line_bot.user_name(event.user_id)
+        friend = LineFriend::add(event.user_id, line_bot.user_name(event.user_id))
         message = "#{friend.display_name}さん、友達登録ありがとうございます！！"
         next line_bot.reply(message, event.reply_token)
       end
