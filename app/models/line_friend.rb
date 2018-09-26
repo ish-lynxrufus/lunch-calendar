@@ -1,0 +1,2 @@
+class LineFriend < ApplicationRecord
+end
