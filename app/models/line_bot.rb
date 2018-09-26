@@ -1,3 +1,5 @@
+require 'line/bot'
+
 class LineBot
   def initialize
     @client = bot_client
