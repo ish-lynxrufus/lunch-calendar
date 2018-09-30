@@ -1,6 +1,6 @@
-require 'logger'
+module Batch::LineBot
+  extend Batch::Log
 
-class Batch::LineBot < Batch::Base
   def self.push
     text = Calendar.new.event_summaries.join("\n")
     response = ::LineBot.new.push(text)
