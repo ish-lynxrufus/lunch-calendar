@@ -16,6 +16,11 @@ module LunchCalendar
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
+    # time zone
     config.time_zone = 'Asia/Tokyo'
+
+    # batch
+    config.autoload_paths << Rails.root.join('lib')
+    config.enable_dependency_loading = true
   end
 end
