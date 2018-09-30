@@ -30,12 +30,4 @@ class LineBotController < ApplicationController
 
     head :ok
   end
-
-  # TODO: バッチ処理に移行したタイミングで削除する
-  def push
-    text = Calendar.new.event_summaries.join("\n")
-    response = LineBot.new.push(text)
-
-    render json: response
-  end
 end
