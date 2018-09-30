@@ -6,7 +6,5 @@ Rails.application.routes.draw do
 
   scope '/linebot' do
     post '/callback/', to: 'line_bot#callback', as: 'line_bot_callback'
-    # TODO: バッチ処理に移行したタイミングで削除する
-    get '/push/', to: 'line_bot#push', as: 'line_bot_push'
   end
 end
