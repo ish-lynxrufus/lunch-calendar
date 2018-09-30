@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: lunch-calendar
-  username: lunch-calendar
-  password: <%= ENV['LUNCH-CALENDAR_DATABASE_PASSWORD'] %>
+  database: heroku_e6920385708b903
+  username: b70ccfc0407881
+  password: <%= ENV['DATABASE_PASSWORD'] %>
