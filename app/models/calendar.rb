@@ -1,6 +1,7 @@
 class Calendar
   APPLICATION_NAME = ENV['CALENDAR_APPLICATION_NAME'].freeze
   CALENDAR_ID = ENV['CALENDAR_ID'].freeze
+  CLIENT_SECRET_JSON = ENV['CALENDAR_CLIENT_SECRET_JSON'].freeze
   CLIENT_SECRET_PATH = "./json/#{APPLICATION_NAME}.json".freeze
 
   def initialize
@@ -31,7 +32,7 @@ class Calendar
 
   def authorize
     authorizer = Google::Auth::ServiceAccountCredentials.make_creds(
-      json_key_io: File.open(CLIENT_SECRET_PATH),
+      json_key_io: CLIENT_SECRET_JSON || File.open(CLIENT_SECRET_PATH),
       scope: Google::Apis::CalendarV3::AUTH_CALENDAR)
     authorizer.fetch_access_token!
     authorizer
