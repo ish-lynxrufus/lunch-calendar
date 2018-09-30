@@ -1,7 +1,9 @@
-class Batch::Base
+require 'logger'
+
+module Batch::Log
   LOG_FILE_PATH = 'log/batch.log'.freeze
 
-  def self.logger
+  def logger
     @console ||= ActiveSupport::Logger.new(STDOUT)
     @logger ||= ActiveSupport::Logger.new(LOG_FILE_PATH).tap do |config|
       config.formatter = ::Logger::Formatter.new
