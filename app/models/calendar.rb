@@ -1,6 +1,6 @@
 class Calendar
-  APPLICATION_NAME = ENV['CALENDAR_APPLICATION_NAME'].freeze
-  CALENDAR_ID = ENV['CALENDAR_ID'].freeze
+  APPLICATION_NAME = ENV['GOOGLE_CALENDAR_APPLICATION_NAME'].freeze
+  CALENDAR_ID = ENV['GOOGLE_CALENDAR_ID'].freeze
 
   def initialize
     @service = calendar_service
