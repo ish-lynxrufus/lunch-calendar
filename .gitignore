@@ -30,5 +30,3 @@ vendor/bundle
 /config/master.key
 
 .env
-/json/*
-!/json/.keep
